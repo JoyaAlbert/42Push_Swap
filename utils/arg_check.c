@@ -12,7 +12,7 @@ void	numrep(char **argv, int argc)
 		while(j < argc)
 		{
 			if(((ft_atoi(argv[i]) == ft_atoi(argv[j])) && i != j) 
-				|| ft_atoi(argv[j]) >= INT_MAX || ft_atoi(argv[j]) <= INT_MIN)
+				|| ft_atoi(argv[j]) > INT_MAX || ft_atoi(argv[j]) <  INT_MIN)
 			{
 				perror("Error\n");
 				exit(EXIT_FAILURE);

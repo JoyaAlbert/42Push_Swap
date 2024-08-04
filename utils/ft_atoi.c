@@ -15,10 +15,10 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
-	int	i;
-	int	n;
+	long	i;
+	long	n;
 	int	sign;
 
 	i = 0;

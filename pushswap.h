@@ -20,7 +20,7 @@ typedef struct data
 } t_data;
 
 //utils
-int         ft_atoi(char *str);
+long         ft_atoi(char *str);
 int         ft_isdigit(int c);
 t_stacks	*minvalue(t_stacks **stack);
 void		argscheck(char **argv);
@@ -33,7 +33,7 @@ void		free_one_stack(t_stacks **stack);
 t_stacks	*last_element(t_stacks *list);
 void		get_index(t_stacks **stack);
 void		printlist(t_stacks **stack);
-int	ft_lstsize(t_stacks *head);
+int			ft_lstsize(t_stacks *head);
 
 //moves
 void		sb(t_stacks **stack);
