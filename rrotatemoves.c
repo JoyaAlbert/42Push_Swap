@@ -23,16 +23,16 @@ void	rotate(t_stacks **stack)
 void	rra(t_stacks **a)
 {
 	rotate(a);
-	ft_printf("rra");
+	ft_printf("rra\n");
 }
 void	rrb(t_stacks **b)
 {
 	rotate(b);
-	ft_printf("rrb");
+	ft_printf("rrb\n");
 }
 void	rrr(t_stacks **a, t_stacks **b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rrr");
+	ft_printf("rrr\n");
 }

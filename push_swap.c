@@ -20,7 +20,7 @@ void freestacks(t_stacks **stacka, t_stacks **stackb, t_data *nab)
 {
 	free_one_stack(stacka);
 	free_one_stack(stackb);
-	//free(nab);
+	free(nab);
 }
 void datatake(t_stacks **a, int argc, char **argv, t_data *nab)
 {
@@ -37,36 +37,6 @@ void datatake(t_stacks **a, int argc, char **argv, t_data *nab)
 	nab->na = argc -1;
 	nab->nb = 0;
 }
-void argscheck(char **argv, int argc)
-{
-	int i;
-	int j;
-
-	i = 1;
-	if (argc < 3)
-	{
-		perror("Error");
-		exit(EXIT_FAILURE);
-	}
-	while (argv[i] != NULL)
-	{
-		j = 0;
-		while (argv[i][j] != '\0')
-		{
-			if(j == 0 && (argv[i][0] == '-' || argv[i][0] == '+'))
-				j++;
-			if(ft_isdigit((int)argv[i][j]) == 0)
-			{
-				perror("Error");
-				exit(EXIT_FAILURE);
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-
 
 int main(int argc, char **argv)
 {
@@ -75,12 +45,14 @@ int main(int argc, char **argv)
 	t_data		*nab;
 
 	argscheck(argv, argc);
+	numrep(argv, argc);
 	a = (t_stacks **)malloc(sizeof(t_stacks));
 	b = (t_stacks **)malloc(sizeof(t_stacks));
 	nab = (t_data *)malloc(sizeof(t_data));
-	if(!a || !b)
+	if(!a || !b || !nab)
 		return (0);
 	datatake(a, argc, argv, nab);
+	get_index(a);
 	if(is_sorted(a) == 0)
 	{
 		freestacks(a, b, nab);
@@ -88,5 +60,6 @@ int main(int argc, char **argv)
 	}
 	if(nab->na <= 5)
 		shortsort(a, b, nab);
+	printlist(a);
 	freestacks(a, b, nab);
 }

@@ -1,22 +1,7 @@
 #include "pushswap.h"
 
-int	minvalue(t_stacks **stack)
-{
-	t_stacks	*head;
-	int		min;
 
-	head = *stack;
-	min = head->data;
-	while (head->next)
-	{
-		head = head->next;
-		if ((head->data < min))
-			min = head->data;
-	}
-	return (min);
-}
-
-void sort_3(t_stacks **stack, t_data *nab)
+void sort_3(t_stacks **stack)
 {
 	t_stacks *a;
 
@@ -48,13 +33,24 @@ void sort_4(t_stacks **stacka, t_stacks **stackb, t_data *nab)
 	t_stacks *a;
 
 	a = *stacka;
-    while(a->data != minvalue(stacka))
+	if(nab->nb == 0)
 	{
-        ra(stacka);
-		a = *stacka;
+    	while(a->index != 0)
+		{
+        	ra(stacka);
+			a = *stacka;
+		}
+	}
+	else
+	{
+		while(a->index != 1)
+		{
+        	ra(stacka);
+			a = *stacka;
+		}
 	}
     pb(stackb, stacka, nab);
-  	sort_3(stacka, nab);
+	sort_3(stacka);
     pa(stacka, stackb, nab);
 }
 
@@ -63,14 +59,14 @@ void sort_5(t_stacks **stacka, t_stacks **stackb,  t_data *nab)
 	t_stacks *a;
 
 	a = *stacka;
-    while(a->data != minvalue(stacka))
+    while(a->index != 0)
 	{
 		ra(stacka);
 		a = *stacka;
 	}
     pb(stackb, stacka, nab);
-    sort_4(stacka, stackb, nab);
-    pa(stacka, stackb, nab);
+	sort_4(stacka, stackb, nab);
+	pa(stacka, stackb, nab);
 }
 
 void shortsort(t_stacks **a, t_stacks **b, t_data *nab)
@@ -79,7 +75,7 @@ void shortsort(t_stacks **a, t_stacks **b, t_data *nab)
         sa(a);
     if (nab->na == 3)
     {
-        sort_3(a, nab);
+        sort_3(a);
     }
     if (nab->na == 4)
         sort_4(a, b, nab);

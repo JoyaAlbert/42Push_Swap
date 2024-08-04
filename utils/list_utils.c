@@ -27,6 +27,7 @@ t_stacks *ft_lstnew(int content)
 		return (NULL);
 	newnode->data = content;
 	newnode->next = NULL;
+	newnode->index = -1;
 	return (newnode);
 }
 
@@ -54,3 +55,18 @@ t_stacks	*last_element(t_stacks *list)
 		aux = aux->next;
 	return (aux);
 }
+
+void	get_index(t_stacks **stack)
+{
+	t_stacks *point;
+	int index;
+
+	point = minvalue(stack);
+	index = 0;
+	while(point)
+	{
+		point->index = index++;
+		point = minvalue(stack);
+	}
+}
+

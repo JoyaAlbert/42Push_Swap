@@ -10,7 +10,7 @@ void	ra(t_stacks **a)
 	*a = p_start->next;
 	p_start->next = NULL;
 	p_end->next = p_start;
-	ft_printf("ra");
+	ft_printf("ra\n");
 }
 
 void	rb(t_stacks **b)
@@ -23,7 +23,7 @@ void	rb(t_stacks **b)
 	*b = p_start->next;
 	p_start->next = NULL;
 	p_end->next = p_start;
-	ft_printf("rb");
+	ft_printf("rb\n");
 }
 
 void	rr(t_stacks **a, t_stacks **b)
@@ -41,5 +41,5 @@ void	rr(t_stacks **a, t_stacks **b)
 	*b = p_start->next;
 	p_start->next = NULL;
 	p_end->next = p_start;
-	ft_printf("rr");
+	ft_printf("rr\n");
 }
