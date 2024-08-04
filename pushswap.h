@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include "printf/ft_printf.h"
+# include <limits.h>
 
 typedef struct nodes
 {
@@ -22,7 +23,7 @@ typedef struct data
 int         ft_atoi(char *str);
 int         ft_isdigit(int c);
 t_stacks	*minvalue(t_stacks **stack);
-void		argscheck(char **argv, int argc);
+void		argscheck(char **argv);
 void		numrep(char **argv, int argc);
 
 //utils lists

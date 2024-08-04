@@ -5,7 +5,10 @@ void ft_lstadd_back(t_stacks **lst, t_stacks *new)
 	t_stacks *aux;
 
     if (lst == NULL )
+	{
+		free_one_stack(&new);
         exit(EXIT_FAILURE);
+	}
     if (*lst == NULL) 
         *lst = new;
     else 
@@ -16,6 +19,7 @@ void ft_lstadd_back(t_stacks **lst, t_stacks *new)
         aux->next = new;
     }
     new->next = NULL;
+	//free_one_stack(&new);
 }
 
 t_stacks *ft_lstnew(int content)

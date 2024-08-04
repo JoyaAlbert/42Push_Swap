@@ -16,7 +16,7 @@ CYAN 		:= \033[1;36m
 $(NAME):		$(OBJ)
 				@clear
 				@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CYAN}"
-				$(GCC) $(FLAGS) -o $(NAME) $(OBJ) #-fsanitize=address -g3
+				$(GCC) $(FLAGS) -o $(NAME) $(OBJ) #-fsanitize=address
 
 
 

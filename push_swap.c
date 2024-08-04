@@ -146,23 +146,26 @@ int main(int argc, char **argv)
 	t_stacks	**b;
 	t_data		*nab;
 
-	argscheck(argv, argc);
-	numrep(argv, argc);
-	a = (t_stacks **)malloc(sizeof(t_stacks));
-	b = (t_stacks **)malloc(sizeof(t_stacks));
-	nab = (t_data *)malloc(sizeof(t_data));
-	if(!a || !b || !nab)
-		return (0);
-	datatake(a, argc, argv, nab);
-	get_index(a);
-	if(is_sorted(a) == 0)
+	if(argc >= 3)
 	{
+		argscheck(argv);
+		numrep(argv, argc);
+		a = (t_stacks **)malloc(sizeof(t_stacks));
+		b = (t_stacks **)malloc(sizeof(t_stacks));
+		nab = (t_data *)malloc(sizeof(t_data));
+		if(!a || !b || !nab)
+			return (0);
+		datatake(a, argc, argv, nab);
+		get_index(a);
+		if(is_sorted(a) == 0)
+		{
+			freestacks(a, b, nab);
+			return (0);
+		}
+		if(nab->na <= 5)
+			shortsort(a, b, nab);
+		sort_stack(a, b, nab);
+	//	printlist(a);
 		freestacks(a, b, nab);
-		return (0);
 	}
-	if(nab->na <= 5)
-		shortsort(a, b, nab);
-	sort_stack(a, b, nab);
-	//printlist(a);
-	freestacks(a, b, nab);
 }
