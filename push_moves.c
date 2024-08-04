@@ -30,14 +30,14 @@ void	push(t_stacks **dest, t_stacks **og)
 void pb(t_stacks **b, t_stacks **a, t_data *nab)
 {
 	push(b,a);
-	nab->na--;
-	nab->nb++;
+	nab->na = ft_lstsize(*a);
+	nab->nb = ft_lstsize(*b);
 	ft_printf("pb\n");
 }
 void pa(t_stacks **a, t_stacks **b, t_data *nab)
 {
 	push(a,b);
-	nab->na++;
-	nab->nb--;
+	nab->na = ft_lstsize(*a);
+	nab->nb = ft_lstsize(*b);
 	ft_printf("pa\n");
 }
