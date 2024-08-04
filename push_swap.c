@@ -38,7 +38,7 @@ void datatake(t_stacks **a, int argc, char **argv, t_data *nab)
 	nab->nb = 0;
 }
 //      1026 moves
-/*
+
 void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 {
 	int	i;
@@ -64,7 +64,7 @@ void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 		while (*stack_b)
 			pa(stack_a, stack_b, nab);
 	}
-}*/
+}
 // 1084
 /**    
 void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
