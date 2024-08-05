@@ -14,23 +14,22 @@ int	ft_lstsize(t_stacks *stack)
 	}
 	return (i);
 }
-
+/**
 void printlist(t_stacks **stack) 
 {
-    if (stack == NULL || *stack == NULL) 
+	if (stack == NULL || *stack == NULL) 
 	{
-        printf("La lista está vacía.\n");
-        return;
-    }
+		printf("La lista está vacía.\n");
+		return;
+	}
 
-    t_stacks *actual = *stack;
-    while (actual != NULL) 
+	t_stacks *actual = *stack;
+	while (actual != NULL) 
 	{
-        printf("Data: %d   Index: %d\n", actual->data, actual->index);
-        actual = actual->next;
-    }
-}
-
+		printf("Data: %d   Index: %d\n", actual->data, actual->index);
+		actual = actual->next;
+	}
+}*/
 
 t_stacks	*minvalue(t_stacks **stack)
 {
@@ -41,10 +40,10 @@ t_stacks	*minvalue(t_stacks **stack)
 	start = *stack;
 	min = NULL;
 	flag = 0;
-	if(start)
+	if (start)
 	{
 		while (start)
-		{	
+		{
 			if (start->index == -1 && (!flag || start->data < min->data))
 			{
 				min = start;

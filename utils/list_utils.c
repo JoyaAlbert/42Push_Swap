@@ -1,28 +1,27 @@
 #include "../pushswap.h"
 
-void ft_lstadd_back(t_stacks **lst, t_stacks *new) 
+void	ft_lstadd_back(t_stacks **lst, t_stacks *new)
 {
-	t_stacks *aux;
+	t_stacks	*aux;
 
-    if (lst == NULL )
+	if (lst == NULL )
 	{
 		free_one_stack(&new);
-        exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
-    if (*lst == NULL) 
-        *lst = new;
-    else 
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-        aux = *lst;
-        while (aux->next != NULL)
-            aux = aux->next;
-        aux->next = new;
-    }
-    new->next = NULL;
-	//free_one_stack(&new);
+		aux = *lst;
+		while (aux->next != NULL)
+			aux = aux->next;
+		aux->next = new;
+	}
+	new->next = NULL;
 }
 
-t_stacks *ft_lstnew(int content)
+t_stacks	*ft_lstnew(int content)
 {
 	t_stacks	*newnode;
 
@@ -35,13 +34,13 @@ t_stacks *ft_lstnew(int content)
 	return (newnode);
 }
 
-void    free_one_stack(t_stacks **stack)
+void	free_one_stack(t_stacks **stack)
 {
-	t_stacks *point;
-	t_stacks *aux;
+	t_stacks	*point;
+	t_stacks	*aux;
 
 	point = *stack;
-	while(point != NULL)
+	while (point != NULL)
 	{
 		aux = point;
 		point = point->next;
@@ -52,25 +51,24 @@ void    free_one_stack(t_stacks **stack)
 
 t_stacks	*last_element(t_stacks *list)
 {
-	t_stacks *aux;
+	t_stacks	*aux;
 
 	aux = list;
-	while(aux->next != NULL)
+	while (aux->next != NULL)
 		aux = aux->next;
 	return (aux);
 }
 
 void	get_index(t_stacks **stack)
 {
-	t_stacks *point;
-	int index;
+	t_stacks	*point;
+	int			index;
 
 	point = minvalue(stack);
 	index = 0;
-	while(point)
+	while (point)
 	{
 		point->index = index++;
 		point = minvalue(stack);
 	}
 }
-

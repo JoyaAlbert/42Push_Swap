@@ -27,16 +27,17 @@ void	push(t_stacks **dest, t_stacks **og)
 	return ;
 }
 
-void pb(t_stacks **b, t_stacks **a, t_data *nab)
+void	pb(t_stacks **b, t_stacks **a, t_data *nab)
 {
-	push(b,a);
+	push(b, a);
 	nab->na = ft_lstsize(*a);
 	nab->nb = ft_lstsize(*b);
 	ft_printf("pb\n");
 }
-void pa(t_stacks **a, t_stacks **b, t_data *nab)
+
+void	pa(t_stacks **a, t_stacks **b, t_data *nab)
 {
-	push(a,b);
+	push(a, b);
 	nab->na = ft_lstsize(*a);
 	nab->nb = ft_lstsize(*b);
 	ft_printf("pa\n");

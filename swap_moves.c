@@ -1,6 +1,6 @@
 #include "pushswap.h"
 
-void swap(t_stacks **stack)
+void	swap(t_stacks **stack)
 {
 	t_stacks	*point;
 	t_stacks	*next;
@@ -9,7 +9,7 @@ void swap(t_stacks **stack)
 
 	point = *stack;
 	next = point->next;
-	if(point == NULL && next == NULL)
+	if (point == NULL && next == NULL)
 		exit(EXIT_FAILURE);
 	aux = point->data;
 	i_aux = point->index;
@@ -18,21 +18,22 @@ void swap(t_stacks **stack)
 	next->data = aux;
 	next->index = i_aux;
 }
-void sb(t_stacks **stack)
+
+void	sb(t_stacks **stack)
 {
 	swap(stack);
 	ft_printf("sb\n");
 }
-void sa(t_stacks **stack)
+
+void	sa(t_stacks **stack)
 {
 	swap(stack);
 	ft_printf("sa\n");
 }
+
 void	ss(t_stacks **a, t_stacks **b)
 {
 	swap(a);
 	swap(b);
 	ft_printf("ss\n");
 }
-
-

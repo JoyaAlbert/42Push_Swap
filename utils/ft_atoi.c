@@ -7,6 +7,7 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
+
 static int	ft_isspace(int c)
 {
 	if (c == '\f' || c == '\n' || c == '\r' || c == '\t' || c == '\v'
@@ -19,7 +20,7 @@ long	ft_atoi(char *str)
 {
 	long	i;
 	long	n;
-	int	sign;
+	int		sign;
 
 	i = 0;
 	n = 0;
