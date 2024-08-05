@@ -114,3 +114,36 @@ void	push(t_stacks **dest, t_stacks **og)
 ```
 
 **SORT FUNCION Y RADIX**
+Radix ordena los numero por orden de las cifras es decir si tienes
+->Original:  170, 45, 75, 90, 802, 24, 2, 66
+primero ordena los que tiene 3 cifras quedando -> 170, 90, 802, 2, 24, 45, 75, 66 
+por que solo revisamos la ultima cifra
+ahora la siguiente cifra, tenemos->802, 2, 24, 45, 66, 170, 75, 90 y asi hasta hacer todas
+esto lo vamos a hacer con comporbacion de bits, un contador nos va indiciar q bit es siendo el bit 0 las unidades y asi veamos en el codigo
+```c
+void sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
+{
+    int i; //nuestro contador de bits
+    int j; //nustro contador de numeros del stack
+    int stack_size;
+
+    i = 0;
+    stack_size = ft_lstsize(*stack_a); // tamaño de numeros en el stack
+    while (is_sorted(stack_a) == -1) //mintras que no este ordenado
+    {
+        j = 0;
+        while (*stack_a && j < stack_size && is_sorted(stack_a) == -1)  //mientras que no sea NULL ni nos hayamos pasado del numero de elementos en el stack ni este ordenado
+        {
+            if (((*stack_a)->index >> i) & 1)  //si la posicion en la que se encuentra el numero al comparar con >> con el numero de bit es 1 quiere decir que es mas grande que las unidades lo rotamos a la ultima posicion 
+                ra(stack_a); 
+            else
+                pb(stack_b, stack_a, nab); //lo llevamos a la pila b ciando i y el index son iguales
+            j++;
+        }
+        i++;
+        while (*stack_b)
+            pa(stack_a, stack_b, nab); //lo devolvemos a la pila original
+    }
+}
+``
+
