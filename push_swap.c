@@ -45,8 +45,8 @@ void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 	int	j;
 	int	stack_size;
 
-	if (!stack_a || !*stack_a || !(*stack_a)->next)
-		return ;
+	//if (!stack_a || !*stack_a || !(*stack_a)->next)
+	//	return ;
 	i = 0;
 	stack_size = ft_lstsize(*stack_a);
 	while (is_sorted(stack_a) == -1)
