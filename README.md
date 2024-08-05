@@ -114,12 +114,52 @@ void	push(t_stacks **dest, t_stacks **og)
 ```
 
 **SORT FUNCION Y RADIX**
-Radix ordena los numero por orden de las cifras es decir si tienes
-->Original:  170, 45, 75, 90, 802, 24, 2, 66
-primero ordena los que tiene 3 cifras quedando -> 170, 90, 802, 2, 24, 45, 75, 66 
-por que solo revisamos la ultima cifra
-ahora la siguiente cifra, tenemos->802, 2, 24, 45, 66, 170, 75, 90 y asi hasta hacer todas
-esto lo vamos a hacer con comporbacion de bits, un contador nos va indiciar q bit es siendo el bit 0 las unidades y asi veamos en el codigo
+Radix ordena los numero por comprobacion binaria ordnea por las posiciones de los bits es decir si tienes
+los revisa en binario con cada bit en su posicion, si ambos bits son iguales su valor asi consigo el bit importante
+por lo que al ordnar todas las posiciones de los bits en binario reducimos el numero de comprobaciones y nos aseguramos que se van a ir stackeando en la pila b por orden descendente decimal lo que al pushearlo de vuelta nos lo ordena ascendentemente
+el operador x>>n desplaza n bits de x a la derecha asi comprobamos el bit q queremos revisar y el operador & realiza la operazion & de las puertas logicas
+
+ejemlo con 6 4 2 3 0 1
+compramos con PRIMER bit
+
+6 -> 110 -> (110 >> 0) & 1 = 0 -> pb
+4 -> 100 -> (100 >> 0) & 1 = 0 -> pb
+2 -> 010 -> (010 >> 0) & 1 = 0 -> pb
+3 -> 011 -> (011 >> 0) & 1 = 1 -> ra
+0 -> 000 -> (000 >> 0) & 1 = 0 -> pb
+1 -> 001 -> (001 >> 0) & 1 = 1 -> ra
+
+stack a-> 1 3;
+stack b-> 6 4 2 0
+lo devolvemos stack a-> 0 2 4 6 1 3
+
+Comparamos con el SEGUNDO bit
+ejmplo >> (011 >> 1) = 101 entonces 1 & 1 = 1
+3 -> 011 -> (011 >> 1) & 1 = 1 -> ra
+1 -> 001 -> (001 >> 1) & 1 = 0 -> pb
+6 -> 110 -> (110 >> 1) & 1 = 1 -> ra
+4 -> 100 -> (100 >> 1) & 1 = 0 -> pb
+2 -> 010 -> (010 >> 1) & 1 = 1 -> ra
+0 -> 000 -> (000 >> 1) & 1 = 0 -> pb
+
+stack a-> 2 6 3;
+stack b-> 1 4 0
+lo devolvemos stack a-> 0 2 4 6 1 3
+
+comparamos con TERCER bit
+	       _
+3 -> 011 -> (011 >> 2) & 1 = 0 -> pb
+6 -> 110 -> (110 >> 2) & 1 = 1 -> ra
+2 -> 010 -> (010 >> 2) & 1 = 0 -> pb
+1 -> 001 -> (001 >> 2) & 1 = 0 -> pb
+4 -> 100 -> (100 >> 2) & 1 = 1 -> ra
+0 -> 000 -> (000 >> 2) & 1 = 0 -> pb
+
+stack a-> 4 6;
+stack b -> 3 2 1 0
+al pasarlo
+stack a-> 0 1 2 3 4 6
+
 ```c
 void sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 {
@@ -134,16 +174,15 @@ void sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
         j = 0;
         while (*stack_a && j < stack_size && is_sorted(stack_a) == -1)  //mientras que no sea NULL ni nos hayamos pasado del numero de elementos en el stack ni este ordenado
         {
-            if (((*stack_a)->index >> i) & 1)  //si la posicion en la que se encuentra el numero al comparar con >> con el numero de bit es 1 quiere decir que es mas grande que las unidades lo rotamos a la ultima posicion 
+            if (((*stack_a)->index >> i) & 1)  //si la posicion en la que se encuentra el numero al comparar con >> con el numero de bit es 1 quiere q es el bit menos significatico de esa comparacion
                 ra(stack_a); 
             else
-                pb(stack_b, stack_a, nab); //lo llevamos a la pila b ciando i y el index son iguales
+                pb(stack_b, stack_a, nab); //lo llevamos a la pila b cuando i y el index tiene un bit significtavo al comprar
             j++;
         }
         i++;
         while (*stack_b)
-            pa(stack_a, stack_b, nab); //lo devolvemos a la pila original
+            pa(stack_a, stack_b, nab); //lo devolvemos a la pila original para ver su nueva relacion con respecto al nuevo valor de i
     }
 }
-``
-
+```
