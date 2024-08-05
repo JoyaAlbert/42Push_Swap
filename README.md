@@ -119,15 +119,16 @@ los revisa en binario con cada bit en su posicion, si ambos bits son iguales su 
 por lo que al ordnar todas las posiciones de los bits en binario reducimos el numero de comprobaciones y nos aseguramos que se van a ir stackeando en la pila b por orden descendente decimal lo que al pushearlo de vuelta nos lo ordena ascendentemente
 el operador x>>n desplaza n bits de x a la derecha asi comprobamos el bit q queremos revisar y el operador & realiza la operazion & de las puertas logicas
 
-ejemlo con 6 4 2 3 0 1
-compramos con PRIMER bit
+  
+ejemlo con 6 4 2 3 0 1  
+compramos con PRIMER bit  
 
-6 -> 110 -> (110 >> 0) & 1 = 0 -> pb
-4 -> 100 -> (100 >> 0) & 1 = 0 -> pb
-2 -> 010 -> (010 >> 0) & 1 = 0 -> pb
-3 -> 011 -> (011 >> 0) & 1 = 1 -> ra
-0 -> 000 -> (000 >> 0) & 1 = 0 -> pb
-1 -> 001 -> (001 >> 0) & 1 = 1 -> ra
+6 -> 110 -> (110 >> 0) & 1 = 0 -> pb  
+4 -> 100 -> (100 >> 0) & 1 = 0 -> pb  
+2 -> 010 -> (010 >> 0) & 1 = 0 -> pb  
+3 -> 011 -> (011 >> 0) & 1 = 1 -> ra  
+0 -> 000 -> (000 >> 0) & 1 = 0 -> pb  
+1 -> 001 -> (001 >> 0) & 1 = 1 -> ra  
 
 stack a-> 1 3;
 stack b-> 6 4 2 0
