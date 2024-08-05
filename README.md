@@ -176,7 +176,7 @@ void sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
         j = 0;
         while (*stack_a && j < stack_size && is_sorted(stack_a) == -1)  //mientras que no sea NULL ni nos hayamos pasado del numero de elementos en el stack ni este ordenado
         {
-            if (((*stack_a)->index >> i) & 1)  //si la posicion en la que se encuentra el numero al comparar con >> con el numero de bit es 1 quiere q es el bit menos significatico de esa comparacion
+            if (((*stack_a)->index >> i) & 1)  //si la posicion en la que se encuentra el numero al comparar con >> con el numero de bit es 1 lo queremos dejar en este stack para ordenador en el otro stack primero los que nos devuelvan 0
                 ra(stack_a); 
             else
                 pb(stack_b, stack_a, nab); //lo llevamos a la pila b cuando i y el index tiene un bit significtavo al comprar
