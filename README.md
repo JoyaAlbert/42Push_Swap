@@ -1,3 +1,5 @@
+para coger numeros aleatorios https://push-swap-visualizer.vercel.app/ desarrollado por https://github.com/oyhoyhk
+
 **SWAP**
 *CREO UN PUNTERO AUXILIAR Y OTRO Q ES EL INMEDATIAMENTE POSTERIOR NODO
 UTILIZO UN INT PARA ALMACENAR LOS VALORES DEL PRIMERO 
