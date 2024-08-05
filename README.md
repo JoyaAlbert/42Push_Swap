@@ -179,12 +179,12 @@ void sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
             if (((*stack_a)->index >> i) & 1)  //si la posicion en la que se encuentra el numero al comparar con >> con el numero de bit es 1 lo queremos dejar en este stack para ordenador en el otro stack primero los que nos devuelvan 0
                 ra(stack_a); 
             else
-                pb(stack_b, stack_a, nab); //lo llevamos a la pila b cuando i y el index tiene un bit significtavo al comprar
+                pb(stack_b, stack_a, nab); //lo llevamos a la pila b cuando  el index tiene un bit significtavo al comprarlos con 1, nos asegura que al devolverlo todos los que tengan un 0 en esa posicion de bits estaran ordenados por entre ellos
             j++;
         }
         i++;
         while (*stack_b)
-            pa(stack_a, stack_b, nab); //lo devolvemos a la pila original para ver su nueva relacion con respecto al nuevo valor de i
+            pa(stack_a, stack_b, nab); //lo devolvemos a la pila original para ver su nueva relacion con respecto al siguiente bit
     }
 }
 ```
