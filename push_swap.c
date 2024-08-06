@@ -46,7 +46,6 @@ void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 	int	j;
 	int	stack_size;
 
-	*stack_b = NULL;
 	i = 0;
 	stack_size = ft_lstsize(stack_a);
 	while (is_sorted(stack_a) == -1)
@@ -69,10 +68,9 @@ void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 int	main(int argc, char **argv)
 {
 	t_stacks	**a;
-	t_stacks	**b;
 	t_data		*nab;
 
-	if (argc >= 2)
+	if (argc >= 3)
 	{
 		argscheck(argv);
 		numrep(argv, argc);
@@ -87,10 +85,8 @@ int	main(int argc, char **argv)
 			freemem(a,nab);
 			return (0);
 		}
-		b = (t_stacks **)malloc(sizeof(t_stacks));
-		if(!b)
-			return (0);
-		sort(a, b, nab);
-		freeallstacks(a, b, nab);
+		sort(a, nab);
 	}
+	if (argc == 2)
+		return 0;
 }

@@ -82,9 +82,20 @@ void	shortsort(t_stacks **a, t_stacks **b, t_data *nab)
 		sort_5(a, b, nab);
 }
 
-void	sort(t_stacks **a, t_stacks **b, t_data *nab)
+void	sort(t_stacks **a, t_data *nab)
 {
-		if (nab->na <= 5)
-			shortsort(a, b, nab);
+	t_stacks **b;
+
+	b = (t_stacks **)malloc(sizeof(t_stacks));
+	if(!b)
+	{
+		freemem(a, nab);
+		exit(EXIT_FAILURE);
+	}
+	*b = NULL;
+	if (nab->na <= 5)
+		shortsort(a, b, nab);
+	else
 		sort_stack(a, b, nab);
+	freeallstacks(a, b, nab);
 }

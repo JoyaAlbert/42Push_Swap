@@ -34,6 +34,7 @@ int			ft_strncmp(char *s1, char *s2, unsigned int n);
 void		ft_lstadd_back(t_stacks **lst, t_stacks *new);
 t_stacks	*ft_lstnew(int content);
 void		free_one_stack(t_stacks **stack);
+void		freeallstacks(t_stacks **stacka, t_stacks **stackb, t_data *nab);
 t_stacks	*last_element(t_stacks *list);
 void		get_index(t_stacks **stack);
 void		printlist(t_stacks **stack);
@@ -55,5 +56,5 @@ void		rrr(t_stacks **a, t_stacks **b);
 
 //sort
 void		sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab);
-void		sort(t_stacks **stack_a, t_stacks **stack_b, t_data *nab);
+void		sort(t_stacks **stack_a, t_data *nab);
 #endif
