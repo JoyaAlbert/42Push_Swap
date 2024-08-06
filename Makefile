@@ -33,9 +33,11 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
+		@clear
+		@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CYAN}"
 		$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-clean:
+clean:			pato
 				@echo "$(RED)Deleting ${YELLOW}.o ${CLR_RMV}"
 				$(RM) $(OBJS)
 
