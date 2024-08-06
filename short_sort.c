@@ -81,3 +81,10 @@ void	shortsort(t_stacks **a, t_stacks **b, t_data *nab)
 	if (nab->na == 5)
 		sort_5(a, b, nab);
 }
+
+void	sort(t_stacks **a, t_stacks **b, t_data *nab)
+{
+		if (nab->na <= 5)
+			shortsort(a, b, nab);
+		sort_stack(a, b, nab);
+}

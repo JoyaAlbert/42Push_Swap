@@ -25,6 +25,10 @@ int			ft_isdigit(int c);
 t_stacks	*minvalue(t_stacks **stack);
 void		argscheck(char **argv);
 void		numrep(char **argv, int argc);
+char		*ft_strchr(const char *s, int c);
+char		**ft_split(char const *s, char c);
+int			ft_strlen(const char *str);
+int			ft_strncmp(char *s1, char *s2, unsigned int n);
 
 //utils lists
 void		ft_lstadd_back(t_stacks **lst, t_stacks *new);
@@ -33,7 +37,8 @@ void		free_one_stack(t_stacks **stack);
 t_stacks	*last_element(t_stacks *list);
 void		get_index(t_stacks **stack);
 void		printlist(t_stacks **stack);
-int			ft_lstsize(t_stacks *head);
+int			ft_lstsize(t_stacks **head);
+void		freemem(t_stacks **stacka, t_data *nab);
 
 //moves
 void		sb(t_stacks **stack);
@@ -48,6 +53,7 @@ void		rra(t_stacks **a);
 void		rrb(t_stacks **a);
 void		rrr(t_stacks **a, t_stacks **b);
 
-//short sort
-void		shortsort(t_stacks **a, t_stacks **b, t_data *nab);
+//sort
+void		sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab);
+void		sort(t_stacks **stack_a, t_stacks **stack_b, t_data *nab);
 #endif

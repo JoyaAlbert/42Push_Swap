@@ -16,7 +16,7 @@ int	is_sorted(t_stacks **stack)
 	return (0);
 }
 
-void	freestacks(t_stacks **stacka, t_stacks **stackb, t_data *nab)
+void	freeallstacks(t_stacks **stacka, t_stacks **stackb, t_data *nab)
 {
 	free_one_stack(stacka);
 	free_one_stack(stackb);
@@ -29,6 +29,7 @@ void	datatake(t_stacks **a, int argc, char **argv, t_data *nab)
 	t_stacks	*new;
 
 	i = 1;
+	*a = NULL;
 	while (argv[i])
 	{
 		new = ft_lstnew(ft_atoi(argv[i]));
@@ -45,8 +46,9 @@ void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 	int	j;
 	int	stack_size;
 
+	*stack_b = NULL;
 	i = 0;
-	stack_size = ft_lstsize(*stack_a);
+	stack_size = ft_lstsize(stack_a);
 	while (is_sorted(stack_a) == -1)
 	{
 		j = 0;
@@ -70,25 +72,25 @@ int	main(int argc, char **argv)
 	t_stacks	**b;
 	t_data		*nab;
 
-	if (argc >= 3)
+	if (argc >= 2)
 	{
 		argscheck(argv);
 		numrep(argv, argc);
 		a = (t_stacks **)malloc(sizeof(t_stacks));
-		b = (t_stacks **)malloc(sizeof(t_stacks));
 		nab = (t_data *)malloc(sizeof(t_data));
-		if (!a || !b || !nab)
+		if (!a || !nab)
 			return (0);
 		datatake(a, argc, argv, nab);
 		get_index(a);
 		if (is_sorted(a) == 0)
 		{
-			freestacks(a, b, nab);
+			freemem(a,nab);
 			return (0);
 		}
-		if (nab->na <= 5)
-			shortsort(a, b, nab);
-		sort_stack(a, b, nab);
-		freestacks(a, b, nab);
+		b = (t_stacks **)malloc(sizeof(t_stacks));
+		if(!b)
+			return (0);
+		sort(a, b, nab);
+		freeallstacks(a, b, nab);
 	}
 }

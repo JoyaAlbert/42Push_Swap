@@ -11,7 +11,7 @@ void	push(t_stacks **dest, t_stacks **og)
 	t_stacks	*point_dest;
 	t_stacks	*point_og;
 
-	if (ft_lstsize(*og) == 0)
+	if (ft_lstsize(og) == 0)
 		return ;
 	point_dest = *dest;
 	point_og = *og;
@@ -35,15 +35,15 @@ void	push(t_stacks **dest, t_stacks **og)
 void	pb(t_stacks **b, t_stacks **a, t_data *nab)
 {
 	push(b, a);
-	nab->na = ft_lstsize(*a);
-	nab->nb = ft_lstsize(*b);
+	nab->na--;
+	nab->nb++;
 	ft_printf("pb\n");
 }
 
 void	pa(t_stacks **a, t_stacks **b, t_data *nab)
 {
 	push(a, b);
-	nab->na = ft_lstsize(*a);
-	nab->nb = ft_lstsize(*b);
+	nab->na++;
+	nab->nb--;
 	ft_printf("pa\n");
 }

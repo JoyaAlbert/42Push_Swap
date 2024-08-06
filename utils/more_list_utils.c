@@ -1,20 +1,35 @@
 #include "../pushswap.h"
 
-int	ft_lstsize(t_stacks *stack)
+int	ft_lstsize(t_stacks **stack)
 {
 	int			i;
 	t_stacks	*aux;
 
-	aux = stack;
-	i = 0;
-	while (aux)
+	if(*stack == NULL)
+		return 0;
+	aux = *stack;
+	i = 1;
+	while (aux->next != NULL)
 	{
 		aux = aux->next;
 		i++;
 	}
 	return (i);
 }
-/**
+
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0' && s[i] != (const char)c)
+		i++;
+	if (s[i] == (const char)c)
+		return ((char *)s + i);
+	return (NULL);
+}
+
 void printlist(t_stacks **stack) 
 {
 	if (stack == NULL || *stack == NULL) 
@@ -29,7 +44,7 @@ void printlist(t_stacks **stack)
 		printf("Data: %d   Index: %d\n", actual->data, actual->index);
 		actual = actual->next;
 	}
-}*/
+}
 
 t_stacks	*minvalue(t_stacks **stack)
 {
@@ -53,4 +68,10 @@ t_stacks	*minvalue(t_stacks **stack)
 		}
 	}
 	return (min);
+}
+
+void	freemem(t_stacks **stacka, t_data *nab)
+{
+	free_one_stack(stacka);
+	free(nab);
 }

@@ -4,6 +4,7 @@ void	ft_lstadd_back(t_stacks **lst, t_stacks *new)
 {
 	t_stacks	*aux;
 
+	aux = *lst;
 	if (lst == NULL )
 	{
 		free_one_stack(&new);
@@ -13,7 +14,7 @@ void	ft_lstadd_back(t_stacks **lst, t_stacks *new)
 		*lst = new;
 	else
 	{
-		aux = *lst;
+
 		while (aux->next != NULL)
 			aux = aux->next;
 		aux->next = new;
