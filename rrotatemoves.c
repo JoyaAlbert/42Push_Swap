@@ -1,10 +1,5 @@
 #include "pushswap.h"
 
-/*creo dos punteros uno de cabeza y otro de final
-y recorro la lista hasta que llego al final
-y el anterior lo hago el ultimo y como en el puntero 
-del final tengo el ultimoelemento igualo el next al stack sin el ultimo
-(lo hicimos NULL al recorrer) la lista la igualamos a ese puntero*/
 //   LAST TO FIRST
 void	rotate(t_stacks **stack)
 {

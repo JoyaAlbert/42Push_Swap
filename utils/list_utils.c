@@ -14,7 +14,6 @@ void	ft_lstadd_back(t_stacks **lst, t_stacks *new)
 		*lst = new;
 	else
 	{
-
 		while (aux->next != NULL)
 			aux = aux->next;
 		aux->next = new;

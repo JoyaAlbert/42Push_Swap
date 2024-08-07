@@ -1,10 +1,5 @@
 #include "pushswap.h"
-/*
-	USO UN PUNTERO AUXILIAR Q SE IGUALA AL DE ORIGEN
-	SI EL DESTINO ESTA VACIO LO IGUALO Y LO IGUALO AL STACK DE DESTINO
-	SI NO AÑADO JUSTO DESPUES DEL PRIMERO EN EL AUXILIAR TODO EL DESTINO
-*/
-//SACA EL PRIMERO Y LO METE EN EL OTRO STACK
+
 void	push(t_stacks **dest, t_stacks **og)
 {
 	t_stacks	*aux;
@@ -32,6 +27,7 @@ void	push(t_stacks **dest, t_stacks **og)
 	return ;
 }
 
+//first of a to b
 void	pb(t_stacks **b, t_stacks **a, t_data *nab)
 {
 	push(b, a);
@@ -40,6 +36,7 @@ void	pb(t_stacks **b, t_stacks **a, t_data *nab)
 	ft_printf("pb\n");
 }
 
+//first of b to a
 void	pa(t_stacks **a, t_stacks **b, t_data *nab)
 {
 	push(a, b);

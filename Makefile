@@ -20,7 +20,7 @@ SRC             =   push_swap.c\
 					utils/aux_array.c
 
 CC          =   gcc
-CFLAGS          =   -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS          =   -Wall -Wextra -Werror -g3 -fsanitize=address
 RM              =   rm -f
 CLR_RMV     := \033[0m
 RED         := \033[1;31m

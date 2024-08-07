@@ -19,7 +19,8 @@ void	numreparray(char **args)
 		{
 			if (((ft_atoi(args[i]) == ft_atoi(args[j])) && i != j)
 				|| ft_atoi(args[j]) > INT_MAX || ft_atoi(args[j]) < INT_MIN
-				|| (ft_strlen(args[i]) == 2 && ft_strncmp(args[i], "-0", 2) == 0))
+				|| (ft_strlen(args[i]) == 2
+					&& ft_strncmp(args[i], "-0", 2) == 0))
 			{
 				write(2, "Error\n", 6);
 				leave_and_free(args);
@@ -30,15 +31,14 @@ void	numreparray(char **args)
 	}
 }
 
-
 void	checkarray(char **str)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = 0;
 	while (str[i] != NULL)
-	{	
+	{
 		j = 0;
 		while (str[i][j] != '\0')
 		{
@@ -78,7 +78,7 @@ void	getdataarray(char *str, int argc)
 	nab->na = ft_lstsize(a);
 	if (is_sorted(a) == 0)
 	{
-		freemem(a,nab);
+		freemem(a, nab);
 		return ;
 	}
 	sort(a, nab);

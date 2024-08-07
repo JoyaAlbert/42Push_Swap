@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 #include "../pushswap.h"
 
-
 static char	*ft_strndup(const char *s1, int n)
 {
 	char	*s2;

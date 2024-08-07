@@ -84,10 +84,10 @@ void	shortsort(t_stacks **a, t_stacks **b, t_data *nab)
 
 void	sort(t_stacks **a, t_data *nab)
 {
-	t_stacks **b;
+	t_stacks	**b;
 
 	b = (t_stacks **)malloc(sizeof(t_stacks));
-	if(!b)
+	if (!b)
 	{
 		freemem(a, nab);
 		exit(EXIT_FAILURE);

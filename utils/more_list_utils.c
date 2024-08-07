@@ -5,8 +5,8 @@ int	ft_lstsize(t_stacks **stack)
 	int			i;
 	t_stacks	*aux;
 
-	if(*stack == NULL)
-		return 0;
+	if (*stack == NULL)
+		return (0);
 	aux = *stack;
 	i = 1;
 	while (aux->next != NULL)
@@ -16,7 +16,6 @@ int	ft_lstsize(t_stacks **stack)
 	}
 	return (i);
 }
-
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -28,22 +27,6 @@ char	*ft_strchr(const char *s, int c)
 	if (s[i] == (const char)c)
 		return ((char *)s + i);
 	return (NULL);
-}
-
-void printlist(t_stacks **stack) 
-{
-	if (stack == NULL || *stack == NULL) 
-	{
-		printf("La lista está vacía.\n");
-		return;
-	}
-
-	t_stacks *actual = *stack;
-	while (actual != NULL) 
-	{
-		printf("Data: %d   Index: %d\n", actual->data, actual->index);
-		actual = actual->next;
-	}
 }
 
 t_stacks	*minvalue(t_stacks **stack)

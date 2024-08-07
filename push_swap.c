@@ -85,11 +85,11 @@ int	main(int argc, char **argv)
 		get_index(a);
 		if (is_sorted(a) == 0)
 		{
-			freemem(a,nab);
+			freemem(a, nab);
 			return (0);
 		}
 		sort(a, nab);
 	}
-	else if(argc == 2)
+	else if (argc == 2)
 		getdataarray(argv[1], argc);
 }

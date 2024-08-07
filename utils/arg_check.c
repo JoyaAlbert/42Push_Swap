@@ -13,7 +13,8 @@ void	numrep(char **argv, int argc)
 		{
 			if (((ft_atoi(argv[i]) == ft_atoi(argv[j])) && i != j)
 				|| ft_atoi(argv[j]) > INT_MAX || ft_atoi(argv[j]) < INT_MIN
-				|| (ft_strlen(argv[i]) == 2 && ft_strncmp(argv[i], "-0", 2) == 0))
+				|| (ft_strlen(argv[i]) == 2
+					&& ft_strncmp(argv[i], "-0", 2) == 0))
 			{
 				write(2, "Error\n", 6);
 				exit(EXIT_FAILURE);
@@ -23,6 +24,7 @@ void	numrep(char **argv, int argc)
 		i++;
 	}
 }
+
 void	freematrix(char **args)
 {
 	int	k;
@@ -38,17 +40,18 @@ void	freematrix(char **args)
 	free(args);
 }
 
-char **getargs(char **argv)
+char	**getargs(char **argv)
 {
-	int i = 1;
-	char **args;
+	int		i;
+	char	**args;
 
-;	while(argv[i] != NULL)
+	i = 1;
+	while (argv[i] != NULL)
 	{
 		if (ft_strchr(argv[i], ' ') != NULL)
 		{
 			args = ft_split(argv[i], ' ');
-			return(args);
+			return (args);
 		}
 		i++;
 	}
@@ -77,5 +80,4 @@ void	argscheck(char **argv)
 		}
 		i++;
 	}
-
 }
