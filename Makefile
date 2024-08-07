@@ -16,10 +16,11 @@ SRC             =   push_swap.c\
 					printf/ft_printf_x.c\
 					printf/ft_printf_p.c\
 					utils/ft_split.c\
-					utils/ft_strncmp.c
+					utils/ft_strncmp.c\
+					utils/aux_array.c
 
 CC          =   gcc
-CFLAGS          =   -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS          =   -Wall -Wextra -Werror -g3 #-fsanitize=address
 RM              =   rm -f
 CLR_RMV     := \033[0m
 RED         := \033[1;31m

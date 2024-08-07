@@ -20,16 +20,19 @@ typedef struct data
 }	t_data;
 
 //utils
+int			is_sorted(t_stacks **stack);
 long		ft_atoi(char *str);
 int			ft_isdigit(int c);
 t_stacks	*minvalue(t_stacks **stack);
 void		argscheck(char **argv);
 void		numrep(char **argv, int argc);
+void		freematrix(char **args);
 char		*ft_strchr(const char *s, int c);
 char		**ft_split(char const *s, char c);
 int			ft_strlen(const char *str);
 int			ft_strncmp(char *s1, char *s2, unsigned int n);
-
+void		getdataarray(char *str, int argc);
+void		datatake(t_stacks **a, int argc, char **argv, t_data *nab);
 //utils lists
 void		ft_lstadd_back(t_stacks **lst, t_stacks *new);
 t_stacks	*ft_lstnew(int content);

@@ -28,7 +28,10 @@ void	datatake(t_stacks **a, int argc, char **argv, t_data *nab)
 	int			i;
 	t_stacks	*new;
 
-	i = 1;
+	if (argc != 2)
+		i = 1;
+	else
+		i = 0;
 	*a = NULL;
 	while (argv[i])
 	{
@@ -36,7 +39,7 @@ void	datatake(t_stacks **a, int argc, char **argv, t_data *nab)
 		ft_lstadd_back(a, new);
 		i++;
 	}
-	nab->na = argc -1;
+	nab->na = ft_lstsize(a);
 	nab->nb = 0;
 }
 
@@ -70,7 +73,7 @@ int	main(int argc, char **argv)
 	t_stacks	**a;
 	t_data		*nab;
 
-	if (argc >= 3)
+	if (argc >= 3 && ft_strchr(argv[1], ' ') == NULL)
 	{
 		argscheck(argv);
 		numrep(argv, argc);
@@ -87,6 +90,6 @@ int	main(int argc, char **argv)
 		}
 		sort(a, nab);
 	}
-	if (argc == 2)
-		return 0;
+	else if(argc == 2)
+		getdataarray(argv[1], argc);
 }
