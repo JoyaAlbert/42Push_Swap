@@ -92,4 +92,6 @@ int	main(int argc, char **argv)
 	}
 	else if (argc == 2)
 		getdataarray(argv[1], argc);
+	else
+		write(2, "Error\n", 6);
 }
