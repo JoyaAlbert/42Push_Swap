@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pushswap.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajoya-pi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/08 09:34:44 by ajoya-pi          #+#    #+#             */
+/*   Updated: 2024/08/08 09:34:46 by ajoya-pi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
@@ -58,6 +70,8 @@ void		rrb(t_stacks **a);
 void		rrr(t_stacks **a, t_stacks **b);
 
 //sort
+void		separated_inputs(char	**argv, int argc);
+void		checkfirstarg(char **argv, int argc);
 int			is_sorted(t_stacks **stack);
 void		get_index(t_stacks **stack);
 void		sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   more_list_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajoya-pi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/08 10:04:04 by ajoya-pi          #+#    #+#             */
+/*   Updated: 2024/08/08 10:04:06 by ajoya-pi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../pushswap.h"
 
 int	ft_lstsize(t_stacks **stack)
@@ -57,4 +69,25 @@ void	freemem(t_stacks **stacka, t_data *nab)
 {
 	free_one_stack(stacka);
 	free(nab);
+}
+
+void	separated_inputs(char	**argv, int argc)
+{
+	t_stacks	**a;
+	t_data		*nab;
+
+	argscheck(argv);
+	numrep(argv, argc);
+	a = (t_stacks **)malloc(sizeof(t_stacks));
+	nab = (t_data *)malloc(sizeof(t_data));
+	if (!a || !nab)
+		return ;
+	datatake(a, argc, argv, nab);
+	get_index(a);
+	if (is_sorted(a) == 0)
+	{
+		freemem(a, nab);
+		return ;
+	}
+	sort(a, nab);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajoya-pi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/08 09:34:25 by ajoya-pi          #+#    #+#             */
+/*   Updated: 2024/08/08 09:34:28 by ajoya-pi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 int	is_sorted(t_stacks **stack)
@@ -70,28 +82,10 @@ void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 
 int	main(int argc, char **argv)
 {
-	t_stacks	**a;
-	t_data		*nab;
-
 	if (argc >= 3 && ft_strchr(argv[1], ' ') == NULL)
-	{
-		argscheck(argv);
-		numrep(argv, argc);
-		a = (t_stacks **)malloc(sizeof(t_stacks));
-		nab = (t_data *)malloc(sizeof(t_data));
-		if (!a || !nab)
-			return (0);
-		datatake(a, argc, argv, nab);
-		get_index(a);
-		if (is_sorted(a) == 0)
-		{
-			freemem(a, nab);
-			return (0);
-		}
-		sort(a, nab);
-	}
+		separated_inputs(argv, argc);
 	else if (argc == 2)
 		getdataarray(argv[1], argc);
-	else
-		write(2, "Error\n", 6);
+	else if (argc >= 3 && ft_strchr(argv[1], ' ') != NULL)
+		checkfirstarg(argv, argc);
 }
