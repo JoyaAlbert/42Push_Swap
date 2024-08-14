@@ -95,3 +95,9 @@ void	getdataarray(char *str, int argc)
 	}
 	sort(a, nab);
 }
+
+void	error_and_ext(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}

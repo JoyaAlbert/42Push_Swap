@@ -43,6 +43,7 @@ int			ft_strncmp(char *s1, char *s2, unsigned int n);
 void		getdataarray(char *str, int argc);
 void		datatake(t_stacks **a, int argc, char **argv, t_data *nab);
 void		freematrix(char **args);
+void		error_and_ext(void);
 t_stacks	*minvalue(t_stacks **stack);
 void		argscheck(char **argv);
 void		numrep(char **argv, int argc);

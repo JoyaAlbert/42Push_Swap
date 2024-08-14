@@ -27,10 +27,7 @@ void	numrep(char **argv, int argc)
 				|| ft_atoi(argv[j]) > INT_MAX || ft_atoi(argv[j]) < INT_MIN
 				|| (ft_strlen(argv[i]) == 2
 					&& ft_strncmp(argv[i], "-0", 2) == 0))
-			{
-				write(2, "Error\n", 6);
-				exit(EXIT_FAILURE);
-			}
+				error_and_ext();
 			j++;
 		}
 		i++;
@@ -90,10 +87,7 @@ void	checkfirstarg(char **argv, int argc)
 		i++;
 	}
 	if (c >= 1)
-	{
-		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
+		error_and_ext();
 	else
 		separated_inputs(argv, argc);
 }
@@ -118,10 +112,7 @@ void	argscheck(char **argv)
 			if (j == 0 && (argv[i][0] == '-' || argv[i][0] == '+'))
 				j++;
 			if (ft_isdigit((int)argv[i][j]) == 0 && j <= z)
-			{
-				write(2, "Error\n", 6);
-				exit(EXIT_FAILURE);
-			}
+				error_and_ext();
 			j++;
 		}
 		i++;
