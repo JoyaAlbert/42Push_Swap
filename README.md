@@ -1,11 +1,24 @@
-para coger numeros aleatorios https://push-swap-visualizer.vercel.app/ desarrollado por https://github.com/oyhoyhk
+# 42 Push Swap
 
-**SWAP**
-*CREO UN PUNTERO AUXILIAR Y OTRO Q ES EL INMEDATIAMENTE POSTERIOR NODO
-UTILIZO UN INT PARA ALMACENAR LOS VALORES DEL PRIMERO 
-Y SIMPLEMENTE LOS INTERCAMBIO*
+Este proyecto implementa el algoritmo de ordenación "push_swap" utilizando estructuras de datos tipo pila (stacks). El objetivo es ordenar una lista de números enteros utilizando un conjunto limitado de operaciones, optimizando el número de movimientos.
+
+## Visualizador
+
+Puedes generar números aleatorios y visualizar tus movimientos en:  
+https://push-swap-visualizer.vercel.app/  
+Desarrollado por [oyhoyhk](https://github.com/oyhoyhk)
+
+---
+
+## Operaciones principales
+
+### SWAP
+
+**Descripción:**  
+Intercambia los dos primeros elementos de la pila.
+
+**Implementación:**
 ```c
-  //SWAP 2 POS 1->2 2->1
 void	swap(t_stacks **stack)
 {
 	t_stacks	*point;
@@ -26,14 +39,15 @@ void	swap(t_stacks **stack)
 }
 ```
 
-**ROTATE**
-*IGUALO UN PUNTERO A LA LISTA Y OTRO AL ULTIMO ELEMENTO DE LA LISTA
-MUEVO TODO UNA POSICION QUITANDO LA PRIMERA POSICION
-EN P_START SOLO ESTA EL PRIMER NODO Y EL NEXT ES NULL 
-ASI QUE LO PONEMOS AL FINAL DEL ULTIMO NODO*
+---
 
+### ROTATE
+
+**Descripción:**  
+Desplaza todos los elementos de la pila una posición hacia arriba; el primer elemento pasa a ser el último.
+
+**Implementación:**
 ```c
-//FIRST TO LAST
 void	ra(t_stacks **a)
 {
 	t_stacks	*p_start;
@@ -48,15 +62,15 @@ void	ra(t_stacks **a)
 }
 ```
 
-**RROTATE**
-*CREO DOS PUNTEROS, UNO DE CABEZA Y OTRO DE FINAL 
-Y RECORRO LA LISTA HASTA QUE LLEGO AL FINAL. 
-EL ANTERIOR LO HAGO EL ÚLTIMO Y COMO EN EL PUNTERO 
-DEL FINAL TENGO EL ÚLTIMO ELEMENTO, IGUALO EL NEXT AL STACK SIN EL ÚLTIMO 
-(LO HICIMOS NULL AL RECORRER). LA LISTA LA IGUALAMOS A ESE PUNTERO.*
+---
 
+### REVERSE ROTATE
+
+**Descripción:**  
+Desplaza todos los elementos de la pila una posición hacia abajo; el último elemento pasa a ser el primero.
+
+**Implementación:**
 ```c
-//   LAST TO FIRST
 void	rotate(t_stacks **stack)
 {
 	t_stacks	*p_start;
@@ -78,13 +92,15 @@ void	rotate(t_stacks **stack)
 }
 ```
 
-**PUSH**
-*USO UN PUNTERO AUXILIAR Q SE IGUALA AL DE ORIGEN
-	SI EL DESTINO ESTA VACIO LO IGUALO Y LO IGUALO AL STACK DE DESTINO
-	SI NO AÑADO JUSTO DESPUES DEL PRIMERO EN EL AUXILIAR TODO EL DESTINO*
+---
 
- ```c
-//SACA EL PRIMERO Y LO METE EN EL OTRO STACK
+### PUSH
+
+**Descripción:**  
+Mueve el primer elemento de una pila (origen) al principio de otra pila (destino).
+
+**Implementación:**
+```c
 void	push(t_stacks **dest, t_stacks **og)
 {
 	t_stacks	*aux;
@@ -113,78 +129,101 @@ void	push(t_stacks **dest, t_stacks **og)
 }
 ```
 
-**SORT FUNCION Y RADIX**  
-Radix ordena los numero por comprobacion binaria, ordnea por las posiciones de los bits,  
-compara cada bit con 1 mediante la operacion &, asi se asegura ordenar todos los bits segun el movimiento desado  
-al ordenar todas las posiciones de los bits en binario reducimos el numero de comprobaciones y nos aseguramos que se van a ir stackeando en la pila b por orden descendente decimal, lo que al pushearlo de vuelta nos lo ordena ascendentemente  
-el operador x>>n desplaza n bits de x a la derecha asi comprobamos el bit q queremos revisar y el operador & realiza la operazion & de las puertas logicas  
+---
 
-  
-ejemlo con 6 4 2 3 0 1  
-compramos con PRIMER bit  
+## Algoritmo de ordenación: Radix Sort
 
-6 -> 110 -> (110 >> 0) & 1 = 0 -> pb  
-4 -> 100 -> (100 >> 0) & 1 = 0 -> pb  
-2 -> 010 -> (010 >> 0) & 1 = 0 -> pb  
-3 -> 011 -> (011 >> 0) & 1 = 1 -> ra  
-0 -> 000 -> (000 >> 0) & 1 = 0 -> pb  
-1 -> 001 -> (001 >> 0) & 1 = 1 -> ra  
+El algoritmo Radix Sort ordena los números utilizando la representación binaria de sus índices. Se compara cada bit mediante desplazamientos y operaciones lógicas, asegurando que los números se distribuyan en las pilas de acuerdo al valor de cada bit en cada iteración. Esto permite ordenar eficientemente grandes cantidades de números con un número mínimo de movimientos.
 
-stack a-> 1 3;  
-stack b-> 6 4 2 0  
-lo devolvemos stack a-> 0 2 4 6 1 3  
+---
 
+### Ejemplo detallado de Radix Sort
 
-Comparamos con el SEGUNDO bit  
-ejmplo >> (011 >> 1) = 101 entonces 1 & 1 = 1  
-3 -> 011 -> (011 >> 1) & 1 = 1 -> ra  
-1 -> 001 -> (001 >> 1) & 1 = 0 -> pb  
-6 -> 110 -> (110 >> 1) & 1 = 1 -> ra  
-4 -> 100 -> (100 >> 1) & 1 = 0 -> pb  
-2 -> 010 -> (010 >> 1) & 1 = 1 -> ra   
-0 -> 000 -> (000 >> 1) & 1 = 0 -> pb  
+Supón que tenemos los números: `6 4 2 3 0 1`.  
+A continuación, se muestra cómo se procesa cada número en cada iteración, mostrando su representación binaria, la operación de bit, el resultado y el movimiento correspondiente:
 
+#### 1ª iteración (bit 0)
+| Número | Binario | Operación              | Resultado | Movimiento |
+|--------|---------|------------------------|-----------|------------|
+|   6    | 110     | (110 >> 0) & 1 = 0     |     0     |    pb      |
+|   4    | 100     | (100 >> 0) & 1 = 0     |     0     |    pb      |
+|   2    | 010     | (010 >> 0) & 1 = 0     |     0     |    pb      |
+|   3    | 011     | (011 >> 0) & 1 = 1     |     1     |    ra      |
+|   0    | 000     | (000 >> 0) & 1 = 0     |     0     |    pb      |
+|   1    | 001     | (001 >> 0) & 1 = 1     |     1     |    ra      |
 
-stack a-> 2 6 3;  
-stack b-> 1 4 0  
-lo devolvemos stack a-> 0 2 4 6 1 3  
-  
-comparamos con TERCER bit  
-3 -> 011 -> (011 >> 2) & 1 = 0 -> pb  
-6 -> 110 -> (110 >> 2) & 1 = 1 -> ra    
-2 -> 010 -> (010 >> 2) & 1 = 0 -> pb  
-1 -> 001 -> (001 >> 2) & 1 = 0 -> pb  
-4 -> 100 -> (100 >> 2) & 1 = 1 -> ra  
-0 -> 000 -> (000 >> 2) & 1 = 0 -> pb  
-  
-stack a-> 4 6;  
-stack b -> 3 2 1 0  
-al pasarlo  
-stack a-> 0 1 2 3 4 6  
+- **stack a:** 1 3  
+- **stack b:** 6 4 2 0  
+- Al devolver los elementos de `b` a `a` → **stack a:** 0 2 4 6 1 3
+
+#### 2ª iteración (bit 1)
+| Número | Binario | Operación              | Resultado | Movimiento |
+|--------|---------|------------------------|-----------|------------|
+|   3    | 011     | (011 >> 1) & 1 = 1     |     1     |    ra      |
+|   1    | 001     | (001 >> 1) & 1 = 0     |     0     |    pb      |
+|   6    | 110     | (110 >> 1) & 1 = 1     |     1     |    ra      |
+|   4    | 100     | (100 >> 1) & 1 = 0     |     0     |    pb      |
+|   2    | 010     | (010 >> 1) & 1 = 1     |     1     |    ra      |
+|   0    | 000     | (000 >> 1) & 1 = 0     |     0     |    pb      |
+
+- **stack a:** 2 6 3  
+- **stack b:** 1 4 0  
+- Al devolver los elementos de `b` a `a` → **stack a:** 0 4 1 2 6 3
+
+#### 3ª iteración (bit 2)
+| Número | Binario | Operación              | Resultado | Movimiento |
+|--------|---------|------------------------|-----------|------------|
+|   3    | 011     | (011 >> 2) & 1 = 0     |     0     |    pb      |
+|   6    | 110     | (110 >> 2) & 1 = 1     |     1     |    ra      |
+|   2    | 010     | (010 >> 2) & 1 = 0     |     0     |    pb      |
+|   1    | 001     | (001 >> 2) & 1 = 0     |     0     |    pb      |
+|   4    | 100     | (100 >> 2) & 1 = 1     |     1     |    ra      |
+|   0    | 000     | (000 >> 2) & 1 = 0     |     0     |    pb      |
+
+- **stack a:** 4 6  
+- **stack b:** 3 2 1 0  
+- Al devolver los elementos de `b` a `a` → **stack a:** 0 1 2 3 4 6
+
+---
+
+**En cada iteración, el algoritmo revisa cada bit de los índices de los números y mueve los elementos entre las pilas `a` y `b` según el valor del bit. Así se logra el orden deseado con una cantidad mínima de movimientos.**
+
+---
+
+### Implementación de la función de ordenación
 
 ```c
-void sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
+void	sort_stack(t_stacks **stack_a, t_stacks **stack_b, t_data *nab)
 {
-    int i; //nuestro contador de bits
-    int j; //nustro contador de numeros del stack
-    int stack_size;
+	int	i;
+	int	j;
+	int	stack_size;
 
-    i = 0;
-    stack_size = ft_lstsize(*stack_a); // tamaño de numeros en el stack
-    while (is_sorted(stack_a) == -1) //mintras que no este ordenado
-    {
-        j = 0;
-        while (*stack_a && j < stack_size && is_sorted(stack_a) == -1)  //mientras que no sea NULL ni nos hayamos pasado del numero de elementos en el stack ni este ordenado
-        {
-            if (((*stack_a)->index >> i) & 1)  //si la posicion en la que se encuentra el numero al comparar con >> con el numero de bit es 1 lo queremos dejar en este stack para ordenador en el otro stack primero los que nos devuelvan 0
-                ra(stack_a); 
-            else
-                pb(stack_b, stack_a, nab); //lo llevamos a la pila b cuando  el index tiene un bit significtavo al comprarlos con 1, nos asegura que al devolverlo todos los que tengan un 0 en esa posicion de bits estaran ordenados por entre ellos
-            j++;
-        }
-        i++;
-        while (*stack_b)
-            pa(stack_a, stack_b, nab); //lo devolvemos a la pila original para ver su nueva relacion con respecto al siguiente bit
-    }
+	i = 0;
+	stack_size = ft_lstsize(*stack_a);
+	while (is_sorted(stack_a) == -1)
+	{
+		j = 0;
+		while (*stack_a && j < stack_size && is_sorted(stack_a) == -1)
+		{
+			if (((*stack_a)->index >> i) & 1)
+				ra(stack_a);
+			else
+				pb(stack_b, stack_a, nab);
+			j++;
+		}
+		i++;
+		while (*stack_b)
+			pa(stack_a, stack_b, nab);
+	}
 }
 ```
+
+---
+
+## Notas
+
+- Todos los códigos deben cumplir con la [norma de estilo 42 (Norminette)](https://github.com/42School/norminette).
+- Si tienes dudas sobre el funcionamiento de alguna función, revisa los comentarios en el código o consulta la documentación oficial de la escuela 42.
+
+---
